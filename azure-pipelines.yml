@@ -1,25 +1,26 @@
-# # Xcode
-# # Build, test, and archive an Xcode workspace on macOS.
-# # Add steps that install certificates, test, sign, and distribute an app, save build artifacts, and more:
-# # https://docs.microsoft.com/azure/devops/pipelines/languages/xcode
+# Xcode
+# Build, test, and archive an Xcode workspace on macOS.
+# Add steps that install certificates, test, sign, and distribute an app, save build artifacts, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/xcode
 
-# trigger:
-# - main
+trigger:
+- main
 
-# pool:
-#   vmImage: 'macos-latest'
+pool:
+  vmImage: 'macos-latest'
 
-# steps:
-# - task: Xcode@5
-#   inputs:
-#     actions: 'build'
-#     scheme: ''
-#     sdk: 'iphoneos'
-#     configuration: 'Release'
-#     xcWorkspacePath: '**/*.xcodeproj/project.xcworkspace'
-#     xcodeVersion: 'default' # Options: 8, 9, 10, 11, 12, default, specifyPath
-# - task: PublishBuildArtifacts@1
-#   inputs:
-#     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-#     ArtifactName: 'Xcode-artifact'
-#     publishLocation: 'Container'
+steps:
+- task: Xcode@5
+  inputs:
+    actions: 'build'
+    scheme: ''
+    sdk: 'iphoneos'
+    configuration: 'Release'
+    xcWorkspacePath: '**/*.xcodeproj/project.xcworkspace'
+    xcodeVersion: 'default' # Options: 8, 9, 10, 11, 12, default, specifyPath
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'FilePath'
+    TargetPath: 'E:\'
