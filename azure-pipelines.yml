@@ -20,10 +20,9 @@ steps:
     xcodeVersion: 'default' # Options: 8, 9, 10, 11, 12, default, specifyPath
 - task: CopyFiles@2
   inputs:
-    contents: '**/*.ipa'
-    targetFolder: '$(build.artifactStagingDirectory)'
+    contents: '_buildOutput/**'
+    targetFolder: $(Build.ArtifactStagingDirectory)
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
+    pathToPublish: $(Build.ArtifactStagingDirectory)
+    artifactName: MyBuildOutputs
