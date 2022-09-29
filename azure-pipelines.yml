@@ -18,12 +18,8 @@ steps:
     configuration: 'Release'
     xcWorkspacePath: '**/*.xcodeproj/project.xcworkspace'
     xcodeVersion: 'default' # Options: 8, 9, 10, 11, 12, default, specifyPath 
-- task: CopyFiles@2
-  inputs:
-    contents: '_buildOutput/**'
-    targetFolder: $(Build.ArtifactStagingDirectory)
 - task: PublishBuildArtifacts@1
   inputs:
     pathToPublish: $(Build.ArtifactStagingDirectory)
-    publishLocation: Container
-    artifactName: MyBuildOutputs
+    publishLocation: 'Container'
+    artifactName: 'drop'
