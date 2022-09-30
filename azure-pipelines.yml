@@ -27,9 +27,11 @@ steps:
     sdk: 'iphoneos'
     configuration: 'Release'
     xcWorkspacePath: '**/*.xcodeproj/project.xcworkspace'
-    xcodeVersion: default
+    xcodeVersion: 'default'
+    signingOption: 'default'
 - task: PublishBuildArtifacts@1
   inputs:
     pathToPublish: $(Build.ArtifactStagingDirectory)
     publishLocation: 'Container'
     artifactName: 'drop'
+
